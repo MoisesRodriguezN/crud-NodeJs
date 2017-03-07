@@ -1,0 +1,21 @@
+extends layout
+block contenido
+  div(class="container")
+    h1(class="green-text") Nuevo formulario
+    form(action="inserta-usuario" method="post")
+      div(class="input-field")
+        label(for="nombre") Nombre
+        input(type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus="true")
+        
+      div(class="input-field")
+        label(for="apellido") Apellido
+        input(type="text" name="apellido" id="apellido" placeholder="Apellido")
+
+      div(class="input-field")
+        label(for="edad") Edad
+        input(type="number" min="0" name="edad" id="edad" placeholder="Edad")
+
+      div(class="input-field")
+        label(for="pais") Pais
+        input(type="text" name="pais" id="pais" placeholder="ais")
+      input(type="submit" value="Aceptar")

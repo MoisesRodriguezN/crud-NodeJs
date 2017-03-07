@@ -1,0 +1,28 @@
+extends layout
+block contenido
+  div
+    h1(class="blue") Listado de usuarios
+    form(action="/" method="get")
+      div(class="input-field")
+        label(for="busqueda") Nombre a buscar
+        input(type="text" name="busqueda" id="busqueda")
+      input(type="submit" value="Buscar")
+    a(href="/formulario", class="btn-floating btn-large waves-effect waves-light red") #[i(class="material-icons") add] 
+    table(class="striped")
+      tr
+        th nombre
+        th Apellido
+        th Edad
+        th Pais
+        th
+        th
+      for u in usuarios
+        tr 
+          td #{u.nombre}
+          td #{u.apellido}
+          td #{u.edad}
+          td #{u.pais}
+          td.
+            #[form(action="modificar" method="POST") #[input(type="hidden" name="_id" value="#{u._id}" )] #[input(type="hidden" name="nombre" value="#{u.nombre}" )] #[input(type="hidden" name="apellido" value="#{u.apellido}" )] #[input(type="hidden" name="edad" value="#{u.edad}" )] #[input(type="hidden" name="pais" value="#{u.pais}" )] #[button(type="submit", class="btn-floating btn-large waves-effect waves-light red") #[i(class="material-icons") mode_edit]]]
+          td.
+            #[form(action="borrar" method="POST") #[input(type="hidden" name="_id" value="#{u._id}" )] #[button(type="submit", class="btn-floating btn-large waves-effect waves-light red") #[i(class="material-icons") delete]]]
