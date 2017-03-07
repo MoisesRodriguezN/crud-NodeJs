@@ -2,9 +2,11 @@
 ## CRUD realizado en Node.js con Express y Jade sobre base de datos MondoDB.
 
 Página principal - Listado
-![Página principal - Listado](https://raw.githubusercontent.com/MoisesRodriguezN/crud-NodeJs/master/imgCrud/img1.PNG "Listado")
 
 Formulario Insertar usuario
+![Página principal - Listado](https://raw.githubusercontent.com/MoisesRodriguezN/crud-NodeJs/master/imgCrud/img1.PNG "Listado")
+
+
 ![Formulario Insertar usuario](https://raw.githubusercontent.com/MoisesRodriguezN/crud-NodeJs/master/imgCrud/img2.PNG "Insertar usuario")
 
 Formulario Editar usuario
