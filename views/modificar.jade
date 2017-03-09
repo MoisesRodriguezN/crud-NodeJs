@@ -10,7 +10,7 @@ block contenido
         
       div(class="input-field")
         label(for="apellido") Apellido
-        input(type="text" name="apellido" id="apellido" value="#{usuario.apellido}")
+        input(type="text" name="apellido" id="apellido" value="#{usuario.apellido == undefined ? '' : usuario.apellido}")
 
       div(class="input-field")
         label(for="edad") Edad

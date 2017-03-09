@@ -28,7 +28,6 @@ console.log(req.query.busqueda);
     }else{
       console.log('con filtro');
       b = req.query.busqueda;
-      //filtro = {nombre: '/^' + b + '/'};
       filtro = {nombre: { $regex: "^" + b }};
       
       db.collection('usuarios').find(filtro).toArray(function(err, docs) {
@@ -48,19 +47,14 @@ app.get('/formulario', function (req, res) {
 app.post('/modificar', function (req, res) {
    datos = {};
 
-   console.log(req.body);
-
    if(req.body.pais == "undefined"){
      pais = "";
    }else{
      pais = req.body.pais;
    }
 
-   if(req.body.apellido == "undefined"){
-     apellido = "";
-   }else{
      apellido = req.body.apellido;
-   }
+   
 
    if(req.body.nombre == "undefined"){
      nombre = "";
@@ -79,7 +73,6 @@ app.post('/modificar', function (req, res) {
 
    datos.usuario = usuario;
 
-   //console.log(datos);
   res.render('modificar', datos);
 });
 
@@ -99,7 +92,7 @@ app.post('/inserta-usuario', function (req, res) {
 
     db.collection('usuarios').insert(usuario);
 
-    res.render('inserta-usuario', datos);
+    res.redirect('/');
   });
 });
 
@@ -117,23 +110,16 @@ app.post('/usuario-modificado', function (req, res) {
     };
 
     datos.usuario = usuario;
-    //console.log("{_id: ObjectId('"+ req.body._id + "')}");
      db.collection('usuarios').find({_id: ObjectId(req.body._id)}).toArray(function(err, p){
-       // console.log(p);
         p[0].nombre = req.body.nombre,
         p[0].apellido= req.body.apellido,
         p[0].edad= req.body.edad,
         p[0].pais= req.body.pais
-        
 
-       // console.log(p);
-        //console.log(p[0]);
         db.collection('usuarios').update({_id: ObjectId(req.body._id)},p[0]);
      });
-    
-   /* db.collection('usuarios').update(id,p);*/
 
-    res.render('usuario-modificado', datos);
+    res.redirect('/');
   });
 });
 
@@ -147,7 +133,7 @@ app.post('/borrar', function (req, res) {
 
     db.collection('usuarios').remove(borrado)
 
-    res.render('borrar');
+    res.redirect('/');
   });
 });
 
